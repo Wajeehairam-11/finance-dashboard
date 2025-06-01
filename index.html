@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #f4f3ef;
+      font-family: Arial, sans-serif;
+    }
+
+    .sidebar {
+      height: 100vh;
+      background-color: #a8cfaa;
+      padding-top: 20px;
+      position: fixed;
+      width: 220px;
+    }
+
+    .sidebar .nav-link {
+      color: white;
+      margin-bottom: 15px;
+      display: block;
+      padding: 10px 20px;
+      border-radius: 5px;
+    }
+
+    .sidebar .nav-link:hover {
+      background-color: #88b088;
+    }
+
+    .main {
+      margin-left: 240px;
+      padding: 20px;
+    }
+
+    .card {
+      border-radius: 15px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .note-box {
+      background: #ffffcc;
+      border: 1px solid #e1e1a8;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+
+    .stat-emoji {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h5 class="text-white text-center">My Dashboard</h5>
+    <nav>
+      <a href="manage-categories.html" class="nav-link">Manage Categories</a>
+      <a href="manage-subcategories.html" class="nav-link">Manage Sub Categories</a>
+      <a href="manage-expense-income.html" class="nav-link">Manage Expense / Income</a>
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main">
+    <!-- Stats -->
+    <div class="row mb-4">
+      <div class="col-md-3">
+        <div class="card p-3 text-center">
+          <div class="stat-emoji">💾</div>
+          <h6>Capacity</h6>
+          <h4>150GB</h4>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card p-3 text-center">
+          <div class="stat-emoji">💰</div>
+          <h6>Revenue</h6>
+          <h4>$1,345</h4>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card p-3 text-center">
+          <div class="stat-emoji">⚠️</div>
+          <h6>Errors</h6>
+          <h4>23</h4>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card p-3 text-center">
+          <div class="stat-emoji">👥</div>
+          <h6>Followers</h6>
+          <h4>+45K</h4>
+        </div>
+      </div>
+    </div>
+
+    <!-- Charts -->
+    <div class="card p-3 mb-4">
+      <h6>User Behavior</h6>
+      <canvas id="userBehaviorChart"></canvas>
+    </div>
+
+   
+    <!-- More Charts -->
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <div class="card p-3">
+          <h6>Email Statistics</h6>
+          <canvas id="emailChart"></canvas>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card p-3">
+          <h6>NASDAQ: AAPL</h6>
+          <canvas id="stockChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chart.js Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    // Email Chart
+    new Chart(document.getElementById('emailChart').getContext('2d'), {
+      type: 'pie',
+      data: {
+        labels: ['Opened', 'Read', 'Deleted', 'Unopened'],
+        datasets: [{
+          data: [30, 25, 20, 25],
+          backgroundColor: ['#4BC0C0', '#FF6384', '#FFCE56', '#36A2EB']
+        }]
+      }
+    });
+
+    // User Behavior Chart
+    new Chart(document.getElementById('userBehaviorChart').getContext('2d'), {
+      type: 'line',
+      data: {
+        labels: ['Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb'],
+        datasets: [
+          {
+            label: 'Usage Data',
+            data: [30, 45, 40, 60, 55, 65, 70],
+            backgroundColor: 'rgba(255, 159, 64, 0.4)',
+            borderColor: 'rgba(255, 159, 64, 1)',
+            borderWidth: 2,
+            fill: true,
+            tension: 0.4
+          },
+          {
+            label: 'Revenue Trend',
+            data: [20, 35, 30, 50, 45, 55, 60],
+            backgroundColor: 'rgba(54, 162, 235, 0.4)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 2,
+            fill: true,
+            tension: 0.4
+          }
+        ]
+      }
+    });
+
+    // Stock Chart
+    new Chart(document.getElementById('stockChart').getContext('2d'), {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        datasets: [
+          {
+            label: 'Tesla Model S',
+            data: [5, 10, 15, 25, 30, 45, 55, 50, 60, 62, 70, 75],
+            borderColor: '#FFCE56',
+            fill: false
+          },
+          {
+            label: 'BMW 5 Series',
+            data: [3, 8, 12, 20, 25, 40, 50, 55, 58, 65, 68, 72],
+            borderColor: '#36A2EB',
+            fill: false
+          }
+        ]
+      }
+    });
+  </script>
+</body>
+
+</html>

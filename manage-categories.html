@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Manage Categories</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .sidebar {
+      background-color: #a8cfaa;
+      min-height: 100vh;
+    }
+    .sidebar .nav-link {
+      color: white;
+      margin: 10px 0;
+      padding: 10px 15px;
+      border-radius: 5px;
+    }
+    .sidebar .nav-link:hover {
+      background-color: #88b088;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row flex-nowrap">
+      <!-- Sidebar -->
+      <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 sidebar">
+        <div class="d-flex flex-column align-items-start px-3 pt-2">
+          <h5 class="text-white text-center w-100 mb-4">My Dashboard</h5>
+          <a href="index.html" class="nav-link">Dashboard</a>
+          <a href="manage-categories.html" class="nav-link">Manage Categories</a>
+          <a href="manage-subcategories.html" class="nav-link">Manage Sub Categories</a>
+          <a href="manage-expense-income.html" class="nav-link">Manage Expense / Income</a>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="col py-3">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h4>Manage Categories</h4>
+          <a href="#" class="btn btn-success">+ Add Category</a>
+        </div>
+        <table class="table table-bordered table-striped">
+          <thead class="table-light">
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Groceries</td>
+              <td>Items bought for home use</td>
+              <td>
+                <button class="btn btn-sm btn-primary">Edit</button>
+                <button class="btn btn-sm btn-danger">Delete</button>
+              </td>
+            </tr>
+            <!-- Add more rows as needed -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
